@@ -1,0 +1,34 @@
+title: Valentine de Saint-Point
+is-pinned-card: true
+tags: advisor, escdroite
+card-image: img/portraits/ValentineDeSaintPoint.jpg
+view-if: saintpoint_advisor = 1
+new-page: true 
+
+= Valentine de Saint-Point
+
+France's first female futurist and the head of Collège Idéiste.
+
+- @organizing_women
+- @toleration
+- @root: Return to main
+
+@organizing_women
+title: Organizing women
+subtitle: De Saint-Point's strategies are aimed at more "traditional" women.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: womens_rights += 1; workers_spd += 4*(1-dissent); rural_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); advisor_action_timer = 6
+
+De Saint-Point's strategies for organizing women are aimed at working-class housewives, and acknowledge women's traditional household roles. We argue that our economic welfare programs will improve the livelihoods of women and their families.
+
+[? if spd_r < 50 : Unfortunately, women still disproportionately support the bourgeois parties. ?]
+
+@toleration
+title: Defending Toleration
+subtitle: De Saint-Point supports cooperation with the bourgeois parties.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_toleration: The SPD is not in toleration. ?]
+choose-if: spd_in_government = 0 and spd_toleration = 1 and advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_dissent -= 10; neorevisionist_dissent -= 8; center_dissent -= 5
+
+We have reduced dissent among the anti-toleration factions.

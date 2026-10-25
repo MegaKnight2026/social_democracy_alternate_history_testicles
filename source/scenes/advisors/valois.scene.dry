@@ -1,0 +1,53 @@
+title: Georges Valois
+is-pinned-card: true
+tags: advisor, escgauche
+card-image: img/portraits/GeorgesValois.jpg
+view-if: valois_advisor = 1
+new-page: true 
+
+= Georges Valois
+
+A major national syndicalist theorist and the head of Syndicat National.
+
+- @welfare
+- @class_struggle
+- @emergency_fundraising
+- @depression
+- @root: Return to main
+
+@welfare
+title: Support Workers' Welfare, our mutual aid organization.
+subtitle: -1 resources
+choose-if: resources > 0 and advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if resources < 0: Not enough resources. ?]
+on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += 5*(1 - dissent); workers_spd += 3*(1-dissent); workers_spd += 2*(1-dissent) if black_thursday_seen; advisor_action_timer = 6;
+
+We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : In an age of economic crisis, this will be helpful for improving our standing among the unemployed. ?]
+
+@class_struggle
+title: Rally for class struggle
+subtitle: The core of socialism should be the struggle of the proletariat against the bourgeoisie.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent); workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2
+
+Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
+
+@emergency_fundraising
+title: Emergency Fundraising
+subtitle: An emergency infusion of resources.
+view-if: difficulty < 1
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; resources += dues
+
+We have gained +[+ dues +] resources.
+
+@depression
+title: Addressing the economic crisis
+subtitle: Formulate a plan to get us out of this mess.
+choose-if: advisor_action_timer <= 0 and wtb_adopted = 0 and black_thursday_seen
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if wtb_adopted > 0 : We have already adopted the WTB-Plan. ?]
+on-arrival: advisor_action_timer = 6; wtb_support += 2; center_dissent += 10; labor_strength += 1
+
+The WTB-Plan, standing for its primary supporters Woytinsky, Tarnow, and Baade, has been adopted as the unions' plan for getting us out of the depression. Leipart canvasses in favor of this policy throughout the party and the unions.

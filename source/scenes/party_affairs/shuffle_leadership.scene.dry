@@ -21,7 +21,7 @@ Removing advisors will increase dissent from their faction of the party, while s
 
 @rm_main
 title: Remove advisors.
-tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor 
+tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor, esccentre_advisor, escdroite_advisor, escgauche_advisor 
 frequency: 1
 
 - #remove_advisor
@@ -272,6 +272,96 @@ go-to: rm_main
 
 Radbruch has been removed as an advisor. 
 
+## redfloodian retards
+
+## centre
+
+@remove_apollinaire
+title: Remove Apollinaire
+view-if: apollinaire_advisor = 1
+tags: remove_advisor
+on-arrival: apollinaire_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Apollinaire has been removed as an advisor. 
+
+@remove_nungesser
+title: Remove Nungesser
+view-if: nungesser_advisor = 1
+tags: remove_advisor
+on-arrival: nungesser_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Nungesser has been removed as an advisor. 
+
+@remove_coli
+title: Remove Coli
+view-if: coli_advisor = 1
+tags: remove_advisor
+on-arrival: coli_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Coli has been removed as an advisor. 
+
+
+## gauche
+
+@remove_valois
+title: Remove Valois
+view-if: valois_advisor = 1
+tags: remove_advisor
+on-arrival: valois_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Valois has been removed as an advisor. 
+
+@remove_lamour
+title: Remove Lamour
+view-if: lamour_advisor = 1
+tags: remove_advisor
+on-arrival: lamour_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Lamour has been removed as an advisor. 
+
+@remove_lecorb
+title: Remove Le Corbusier
+view-if: lecorb_advisor = 1
+tags: remove_advisor
+on-arrival: lecorb_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Le Corbusier has been removed as an advisor. 
+
+
+## droite
+
+@remove_saintpoint
+title: Remove de Saint-Point
+view-if: saintpoint_advisor = 1
+tags: remove_advisor
+on-arrival: saintpoint_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+De Saint-Point has been removed as an advisor. 
+
+@remove_canudo
+title: Remove Canudo
+view-if: canudo_advisor = 1
+tags: remove_advisor
+on-arrival: canudo_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Canudo has been removed as an advisor. 
+
+@remove_guenon
+title: Remove Guénon
+view-if: guenon_advisor = 1
+tags: remove_advisor
+on-arrival: guenon_advisor = 0; n_advisors -= 1
+go-to: rm_main
+
+Guénon has been removed as an advisor. 
 
 
 
@@ -286,16 +376,19 @@ go-to: advisor_menu
 
 @advisor_menu
 title: Add other advisors.
-tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor
+tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor, esccentre_advisor, escdroite_advisor, escgauche_advisor
 frequency: 1
 
 
-- @centrist: Add Centrists
-- @left: Add Leftists
-- @reformist: Add Reformists
-- @labor: Add Labor
-- @neorev: Add Neorevisionists
+- @centrist: Add Centrist advisors
+- @left: Add Leftist advisors
+- @reformist: Add Reformist advisors
+- @labor: Add Labor advisors
+- @neorev: Add Neorevisionist advisors
 - @nonfactional: Add non-factional advisors
+- @esccentre: Add Escadron-Centre advisors
+- @escgauche: Add Escadron-Gauche advisors
+- @escdroite: Add Escadron-Droite advisors
 - @rm_main: Remove advisors instead.
 - @remove_none: Stop changing advisors.
 
@@ -328,6 +421,21 @@ view-if: neorevisionism > 0 and n_advisors < 3
 view-if: n_advisors < 3
 
 - #nonfactional_advisor
+
+@esccentre
+view-if: n_advisors < 3
+
+- #esccentre_advisor
+
+@escgauche
+view-if: n_advisors < 3
+
+- #escgauche_advisor
+
+@escdroite
+view-if: n_advisors < 3
+
+- #escdroite_advisor
 
 @add_hilferding
 title: Rudolf Hilferding
@@ -638,4 +746,125 @@ tags: nonfactional_advisor
 
 Friedrich Stampfer is now an advisor.
 
+## red floodian retards
+## escadron centre
 
+@add_apollinaire
+title: Guillaume Apollinaire
+subtitle: Founder of l'Escadron du Futur paramilitary and political organization. {!<br><br>!}Actions - Clear the Agenda, Party Discipline, Emergency Fundraising
+is-card: true
+card-image: img/portraits/GuillaumeApollinaire.jpg
+view-if: apollinaire_advisor = 0 and n_advisors < 3
+on-arrival: apollinaire_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: esccentre_advisor
+
+Guillaume Apollinaire is now an advisor.
+
+
+@add_nungesser
+title: Charles Nungesser
+subtitle: Aide-de-camp to Apollinaire and the head of the paramilitary organization. {!<br><br>!}Actions - Party Discipline, Against Toleration, Addressing the Economic Crisis
+is-card: true
+card-image: img/portraits/CharlesNungesser.jpg
+view-if: nungesser_advisor = 0 and n_advisors < 3
+on-arrival: nungesser_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: esccentre_advisor
+
+Charles Nungesser is now an advisor.
+
+
+@add_coli
+title: François Coli
+subtitle: Partner of Nungesser during the Transatlantic Flight in 1921, also the co writer of the Poilutariat Manifesto. {!<br><br>!}Actions - Media, Editorial Line, Support a People's Party
+is-card: true
+card-image: img/portraits/FrancoisColi.jpg
+view-if: coli_advisor = 0 and n_advisors < 3
+on-arrival: coli_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: esccentre_advisor
+
+François Coli is now an advisor.
+
+
+## escadron gauche
+
+@add_valois
+title: Georges Valois
+subtitle: A major national syndicalist theorist and the head of Syndicat National. {!<br><br>!}Actions - Worker's Welfare, Rally for Class Struggle, Emergency Fundraising, Addressing the Economic Crisis
+is-card: true
+card-image: img/portraits/GeorgesValois.jpg
+view-if: valois_advisor = 0 and n_advisors < 3
+on-arrival: valois_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: escgauche_advisor
+
+Georges Valois is now an advisor.
+
+
+@add_lamour
+title: Philippe Lamour
+subtitle: A student of Valois and the main spokeperson of Escadron-Gauche. {!<br><br>!}Actions - Emergency Fundraising, Union-Party Coordination
+is-card: true
+card-image: img/portraits/PhilippeLamour.jpg
+view-if: lamour_advisor = 0 and n_advisors < 3
+on-arrival: lamour_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: escgauche_advisor
+
+Philippe Lamour is now an advisor.
+
+
+@add_lecorb
+title: Le Corbusier
+subtitle: Charles-Édouard Jeanneret, also known as Le Corbusier, a prominent architect and the mastermind behind Plan Voisin. {!<br><br>!}Actions - Carrying Out the Economic Plan, Addressing the Economic Crisis
+is-card: true
+card-image: img/portraits/LeCorbusier.jpg
+view-if: lecorb_advisor = 0 and n_advisors < 3
+on-arrival: lecorb_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: escgauche_advisor
+
+Le Corbusier is now an advisor.
+
+
+## escadron droite
+
+@add_saintpoint
+title: Valentine de Saint-Point
+subtitle: France's first female futurist and the head of Collège Idéiste. {!<br><br>!}Actions - Organizing Women, Defending Toleration
+is-card: true
+card-image: img/portraits/ValentineDeSaintPoint.jpg
+view-if: saintpoint_advisor = 0 and n_advisors < 3
+on-arrival: saintpoint_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: escdroite_advisor
+
+De Saint-Point is now an advisor.
+
+
+@add_canudo
+title: Ricciotto Canudo
+subtitle: A partner of Saint-Point and a member of Collège Idéiste. {!<br><br>!}Actions - Defending Toleration, Clear the Agenda, Party Discipline, Emergency Fundraising
+is-card: true
+card-image: img/portraits/RicciottoCanudo.jpg
+view-if: canudo_advisor = 0 and n_advisors < 3
+on-arrival: canudo_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: escdroite_advisor
+
+Canudo is now an advisor.
+
+
+@add_guenon
+title: René Guénon
+subtitle: A French Sufi mystic affiliated with Collège Idéiste. {!<br><br>!}Actions - Defending Toleration, Editorial Line
+is-card: true
+card-image: img/portraits/ReneGuenon.jpg
+view-if: guenon_advisor = 0 and n_advisors < 3
+on-arrival: guenon_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+tags: escdroite_advisor
+
+Guénon is now an advisor.

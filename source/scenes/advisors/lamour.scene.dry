@@ -1,0 +1,33 @@
+title: Philippe Lamour
+is-pinned-card: true
+tags: advisor, escgauche
+card-image: img/portraits/PhilippeLamour.jpg
+view-if: lamour_advisor = 1
+new-page: true 
+
+= Philippe Lamour
+
+A student of Valois and the main spokeperson of Escadron-Gauche.
+
+- @emergency_fundraising
+- @union_unity
+- @root: Return to main
+
+@emergency_fundraising
+title: Emergency Fundraising
+view-if: difficulty < 1
+subtitle: An emergency infusion of resources.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; resources += dues
+
+We have gained +[+ dues +] resources.
+
+@union_unity
+title: Union-party coordination
+subtitle: Reduce dissent among the unions.
+choose-if: advisor_action_timer <= 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; labor_dissent -= 10;
+
+We have reduced tensions with the Labor faction.
